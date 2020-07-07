@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Base </title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-nav">
+            
+                <a class="navbar-brand" href="{% url 'index' %}">INDEX</a>
+                <a class="nav-item nav-link" href="{% url 'admin:index' %}">ADMIN</a>    
+                {% if perms.Account.Finance_Manager %}
+                    <a class="nav-item nav-link" href="{% url 'financeManager:create' %}"> approve payments </a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'logout' %}">LOGOUT</a>
+                {% else %}
+                    <a class="nav-item nav-link" href="{% url 'register' %}">REGISTRATIONS</a>
+                    <a class="nav-item nav-link" href="{% url 'login' %}"> LOGIN</a>
+                {% endif %}
+                {% if perms.Account.Analyst %}
+                     <a class="nav-item nav-link" href="{% url 'report:list' %}"> finance  report list </a>
+                    <a class="nav-item nav-link" href="{% url 'report:report_create' %}">finance create report</a>
+                {% endif %}
+                
+
+
+            
+        </div>
+        </nav>  
+
+        <div class="container">
+
+        {% block body_block %}
+        {% endblock %}
+
+        </div>
+        </body>
+</html>
+
+    

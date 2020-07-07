@@ -1,0 +1,18 @@
+{% extends "Account/base.html" %}
+{% block body_block %}
+
+<h1><b> user : {{user}}<br><hr>
+{% if not form.instance.pk %}
+    approve payments to vendor
+    {% else %}
+<br>Update approve payments to vendor
+    {% endif %}
+</br>
+</h1>
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="btn-btn-primary" value="submit">
+</form>
+{% endblock body_block %}

@@ -1,0 +1,12 @@
+<h1>Fianace report by user</h1>
+<ul>
+{% for a in object_list %}
+    <li>
+        <a class="nav nav-link" href="{% url 'report:details' pk=a.id %}">{{a}}</a> 
+        <hr>
+        <p><a class='btn-warning' href="{% url 'report:download' pk=a.id  %}">download data</a></p>
+    </li>
+{% empty %}
+    <li>No user having finance report.</li>
+{% endfor %}
+</ul>

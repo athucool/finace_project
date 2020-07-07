@@ -1,0 +1,17 @@
+{% extends "Account/base.html" %}
+
+{% block body_block %}
+<div class="jumbotron">
+    <h1>  Finance Report Details :</h1>
+    <p> salary: {{finance.salary}} </p>
+    <p>inverstment:{{finance.investment}} </p>
+    <p> total :{{finance.total}} </p>
+    <input type="hidden" name="{{finance.pk}}" value="{{finance.pk}}">
+</div>
+
+<div class="container">
+    <p><a class='btn-warning' href="{% url 'report:update' pk=finance.pk %}">update</a></p>
+    <p><a class='btn-warning' href="{% url 'report:download' pk=finance.pk  %}">download data</a></p>
+
+
+{% endblock  %}

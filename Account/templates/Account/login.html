@@ -1,0 +1,28 @@
+{% extends 'Account/base.html'%}
+
+{% block body_block %}
+
+<div class="jumbotron">
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{request.GET.next}}"
+        
+        {% else %}
+        {% endif %}
+        
+
+    <label for="username" >username : </label>
+    <input type="text" name="username" placeholder="Enter username">
+    
+    <label for="password" >password : </label>
+    <input type="text" name="password" placeholder="Enter password">
+    
+    <input type="submit" name="" value="Login">
+</div>
+
+</form>
+
+{% endblock %}
